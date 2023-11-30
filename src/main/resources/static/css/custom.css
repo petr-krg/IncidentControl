@@ -1,0 +1,19 @@
+/* custom css here */
+body {
+  padding-bottom: 100px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+/* Стиль для футера */
+.fixed-bottom {
+    height: 60px; /* Установка высоты футера */
+}
+/* Дополнительный отступ для body, чтобы содержимое не перекрывалось футером */
+body {
+    padding-bottom: 60px; /* Высота футера */
+}
