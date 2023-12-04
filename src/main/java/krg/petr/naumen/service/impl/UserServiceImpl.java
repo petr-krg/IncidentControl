@@ -153,9 +153,9 @@ public class UserServiceImpl implements UserService {
             }
 
             if (!userProfileDTO.getCurrentDepartment().isEmpty()) {
-                Department department = departmentRepository.findByName(userProfileDTO.getCurrentDepartment());
+                Department division = departmentRepository.findByName(userProfileDTO.getCurrentDivision());
 
-                user.setDepartment(department);
+                user.setDepartment(division);
             }
 
             if (!userProfileDTO.getCurrentPosition().isEmpty()) {
