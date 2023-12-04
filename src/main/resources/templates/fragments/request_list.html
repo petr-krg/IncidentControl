@@ -1,0 +1,68 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Incendentor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div th:fragment="request">
+
+    <div class="container-fluid">
+        <!-- Верхняя панель с кнопками и поиском -->
+        <div class="bg-light border-bottom mb-3 p-3">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <button class="btn btn-success me-1">+ Новая заявка</button>
+                    <button class="btn btn-secondary me-1">Настройка фильтрации</button>
+                    <button class="btn btn-secondary me-1">Все заявки</button>
+                </div>
+                <div class="d-flex">
+                    <input type="search" class="form-control me-2" placeholder="Поиск по номеру или теме">
+                    <button class="btn btn-outline-success">Поиск</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Таблица с заявками -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>№ заявки</th>
+                    <th>Тема</th>
+                    <th>Ответственный</th>
+                    <th>Прогресс</th>
+                    <th>Способ регистрации</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Пример строки с данными -->
+                <tr>
+                    <td>00111111</td>
+                    <td>Не правильная работа функции изменения пароля</td>
+                    <td>Иванов И.И.</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 49%">49%</div>
+                        </div>
+                    </td>
+                    <td>Диспетчер</td>
+                    <td><span class="badge bg-primary">Открыта</span></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Открыть</button>
+                        <button class="btn btn-warning btn-sm">Решить</button>
+                        <button class="btn btn-danger btn-sm">Удалить</button>
+                    </td>
+                </tr>
+                <!-- Добавьте дополнительные строки по аналогии -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

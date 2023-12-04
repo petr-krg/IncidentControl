@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping({"/", "/index"})
+    @GetMapping({"/", "/index", "index", "index.html"})
     public String getHomePage() {
         return "index.html";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "welcome.html";
     }
 }

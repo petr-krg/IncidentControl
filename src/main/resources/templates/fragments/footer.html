@@ -1,0 +1,19 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="footer">
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top">
+        <div class="container-fluid">
+            <footer class="footer">
+                <b>&copy; 2023 petr.krg, erlan.krg</b>
+                <span sec:authorize="isAuthenticated()">
+                    | Пользователь: <span sec:authentication="name"></span> |
+                    Роль: <span sec:authentication="principal.authorities"> </span>
+                </span>
+            </footer>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

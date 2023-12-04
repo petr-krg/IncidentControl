@@ -1,0 +1,110 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+</head>
+<body>
+
+<div th:fragment="userProfile">
+
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Мой профиль</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img th:src="@{/img/no-profile.svg}" alt="Аватар" class="img-fluid mb-2" style="width: 150px; height: 150px; border-radius: 4px;">
+                        <div class="mb-4">
+                            <button class="btn btn-outline-primary"> Обновить фото </button>
+                            <input type="file" class="form-control d-none" accept="image/*">
+                        </div>
+                    </div>
+
+                    <form th:action="@{/user/profile-update}" th:object="${userProfileDTO}" method="post">
+                        <div class="row">
+                            <!-- Первый столбец -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="lastName" class="form-label"><span class="required-star">*</span>Фамилия: </label>
+                                    <input type="text" class="form-control" id="lastName" name="userLatName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="patName" class="form-label">Отчество: </label>
+                                    <input type="text" class="form-control" id="patName" name="userPatName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userName" class="form-label"><span class="required-star">*</span>Отображаемое имя: </label>
+                                    <input type="text" class="form-control" id="userName" name="userDisplayName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userPhone" class="form-label"><span class="required-star">*</span>Телефон: </label>
+                                    <input type="text" class="form-control" id="userPhone" name="userPhone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userDepartment" class="form-label">Департамент: </label>
+                                    <select class="form-select" id="userDepartment" name="currentDepartment" onchange="updateDivision(this.selectedIndex)" required>
+                                        <option selected>Не указано</option>
+                                        <option value="1">Департамент01</option>
+                                        <option value="2">Департамент02</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userPosition" class="form-label">Должность: </label>
+                                    <select class="form-select" id="userPosition" name="currentPosition" required>
+                                        <option selected>Не указано</option>
+                                        <option value="1">Должность01</option>
+                                        <option value="2">Должность02</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Второй столбец -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label"><span class="required-star">*</span>Имя: </label>
+                                    <input type="text" class="form-control" id="firstName" name="userFirstName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="birthdate" class="form-label">Дата рождения: </label>
+                                    <input type="date" class="form-control" id="birthdate" name="userBirthDate">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userLogin" class="form-label"><span class="required-star">*</span>Логин: </label>
+                                    <input type="text" class="form-control" id="userLogin" name="userLogin" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userEmail" class="form-label"><span class="required-star">*</span>Электронная почта: </label>
+                                    <input type="text" class="form-control" id="userEmail" name="userEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userDivision" class="form-label">Отдел: </label>
+                                    <select class="form-select" id="userDivision" name="currentDivision" onchange="updatePosition(this.selectedIndex)" required>
+                                        <option selected>Не указано</option>
+                                        <option value="1">Отдел01</option>
+                                        <option value="2">Отдел02</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userRole" class="form-label"><span class="required-star">*</span>Роль доступа: </label>
+                                    <select class="form-select" id="userRole" name="currentRole" required>
+                                        <option selected>Не указано</option>
+                                        <option value="1">Роль01</option>
+                                        <option value="2">Роль02</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -5,12 +5,18 @@ spring:
     password: postgres
     flyway:
       enabled: true
+    jpa:
+      show-sql: true
 
 logging:
   level:
     org.springframework.jdbc.core.JdbcTemplate: DEBUG
-    logging:
-      level:
-        org:
-          springframework:
-            security: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        data: DEBUG

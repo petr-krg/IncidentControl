@@ -1,4 +1,4 @@
-package krg.petr.naumen.service;
+package krg.petr.naumen.service.impl;
 
 import krg.petr.naumen.model.CustomUserDetail;
 import krg.petr.naumen.model.User;
@@ -14,20 +14,18 @@ import static java.lang.String.format;
 
 @Service
 @Transactional(readOnly = true)
-public class CustomUserDetailsService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public CustomUserDetailsService(UserRepository userRepository) {
+    public UserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         User user = userRepository.findByLogin(name);
-
-        System.out.println("Проверяемый пароль: " + user.getPassword());
 
         if (user != null) {
             return new CustomUserDetail(user);

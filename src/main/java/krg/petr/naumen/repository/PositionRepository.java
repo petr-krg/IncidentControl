@@ -1,0 +1,14 @@
+package krg.petr.naumen.repository;
+
+import krg.petr.naumen.model.Position;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface PositionRepository extends JpaRepository<Position, Long> {
+
+    List<Position> findByDepartmentId(Long idDepartment);
+
+    Position findByName(String name);
+
+}

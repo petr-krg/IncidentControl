@@ -10,13 +10,13 @@ import java.time.LocalDate;
 @Table(name = "persons")
 public class Person extends BaseEntity{
 
-    @Column(name = "first_name", unique = true, length = 50)
+    @Column(name = "first_name", length = 50)
     private String firstName;
 
-    @Column(name = "last_name", unique = true, length = 50)
+    @Column(name = "last_name", length = 50)
     private String lastName;
 
-    @Column(name = "pat_name", unique = true, length = 50)
+    @Column(name = "pat_name", length = 50)
     private String patName;
 
     @Column(name = "birthdate")
@@ -59,6 +59,11 @@ public class Person extends BaseEntity{
 
     public Integer getGender() {
         return gender;
+    }
+
+    public String getGenderDisplayName() {
+        Gender userGender = Gender.fromCode(gender);
+        return (gender != null ? userGender.getDisplayName() : "");
     }
 
     public void setGender(Integer gender) {

@@ -1,0 +1,247 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div th:fragment="clients">
+
+    <div class="container-fluid mt-4">
+        <!-- Вкладки -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#companies">Компании (27)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#contacts">Контакты лица (32)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#physical">Физические лица (30)</a>
+            </li>
+        </ul>
+
+        <!-- Содержимое вкладок -->
+        <div class="tab-content"> <!-- Вкладка Компании -->
+            <div class="tab-pane fade show active" id="companies">
+                <h2 class="mt-3">Список компаний (27)</h2>
+                <!-- Фильтры и таблица для компаний -->
+                <!-- Фильтры -->
+                <div class="d-flex justify-content-between align-items-end mt-3">
+                    <div class="d-flex g-3 align-items-center">
+                        <!-- Поиск -->
+                        <div class="me-3">
+                            <label for="contactsSearch" class="form-label">Поиск: </label>
+                            <input type="text" class="form-control" id="contactsSearch">
+                        </div>
+                        <!-- По категории -->
+                        <div class="me-3">
+                            <label for="contactsCategory" class="form-label">По категории: </label>
+                            <select class="form-select" id="contactsCategory">
+                                <option selected>Не указано</option>
+                                <option value="1">Опция 1</option>
+                                <option value="2">Опция 2</option>
+                            </select>
+                        </div>
+                        <!-- Повторяющиеся заявки -->
+                        <div class="me-3">
+                            <label for="contactsRequest" class="form-label">Повторяющиеся заявки: </label>
+                            <select class="form-select" id="contactsRequest">
+                                <option selected>Не указано</option>
+                                <option value="1">Указывать</option>
+                            </select>
+                        </div>
+                        <!-- На странице -->
+                        <div class="me-3">
+                            <label for="contactsCountPage" class="form-label">На странице: </label>
+                            <select class="form-select" id="contactsCountPage">
+                                <option selected>На странице</option>
+                                <option value="10">10 строк</option>
+                                <option value="20">20 строк</option>
+                                <option value="50">50 строк</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Кнопка Добавить -->
+                    <div>
+                        <button class="btn btn-success">+ Добавить</button>
+                    </div>
+                </div>
+                <!-- Таблица -->
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Название</th>
+                            <th scope="col">Телефон</th>
+                            <th scope="col">Электронная почта</th>
+                            <th scope="col">Ответственный менеджер</th>
+                            <th scope="col">Наблюдатели по умолчанию</th>
+                            <th scope="col">Дата создания</th>
+                        </tr>
+                        </thead>
+                        <!-- Заполните таблицу данными для каждой вкладки -->
+                        <tbody>
+                        <tr>
+                            <td>Horns & Hooves</td>
+                            <td>456-654</td>
+                            <td>info@company.com</td>
+                            <td>Сергеев Иван</td>
+                            <td>Иванов Сергей</td>
+                            <td>02.12.2023</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div> <!-- Вкладка Компании end -->
+
+            <!-- Вкладка Контакты лица -->
+            <div class="tab-pane fade" id="contacts">
+                <h2 class="mt-3">Контактные лица (32)</h2>
+                <!-- Таблица для контактов лица -->
+                <!-- Здесь повторите код таблицы -->
+                <div class="d-flex justify-content-between align-items-end mt-3">
+                    <div class="d-flex g-3 align-items-center">
+                        <!-- Поиск -->
+                        <div class="me-3">
+                            <label for="contactsSearch" class="form-label">Поиск: </label>
+                            <input type="text" class="form-control" id="contactsSearch">
+                        </div>
+                        <!-- По категории -->
+                        <div class="me-3">
+                            <label for="contactsCategory" class="form-label">По категории: </label>
+                            <select class="form-select" id="contactsCategory">
+                                <option selected>Не указано</option>
+                                <option value="1">Опция 1</option>
+                                <option value="2">Опция 2</option>
+                            </select>
+                        </div>
+                        <!-- Повторяющиеся заявки -->
+                        <div class="me-3">
+                            <label for="contactsRequest" class="form-label">Повторяющиеся заявки: </label>
+                            <select class="form-select" id="contactsRequest">
+                                <option selected>Не указано</option>
+                                <option value="1">Указывать</option>
+                            </select>
+                        </div>
+                        <!-- На странице -->
+                        <div class="me-3">
+                            <label for="contactsCountPage" class="form-label">На странице: </label>
+                            <select class="form-select" id="contactsCountPage">
+                                <option selected>На странице</option>
+                                <option value="10">10 строк</option>
+                                <option value="20">20 строк</option>
+                                <option value="50">50 строк</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Кнопка Добавить -->
+                    <div>
+                        <button class="btn btn-success">+ Добавить</button>
+                    </div>
+                </div>
+                <!-- Таблица -->
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Название</th>
+                            <th scope="col">Телефон</th>
+                            <th scope="col">Электронная почта</th>
+                            <th scope="col">Ответственный менеджер</th>
+                            <th scope="col">Наблюдатели по умолчанию</th>
+                            <th scope="col">Дата создания</th>
+                        </tr>
+                        </thead>
+                        <!-- Заполните таблицу данными для каждой вкладки -->
+                        <tbody>
+                        <tr>
+                            <td>Horns & Hooves</td>
+                            <td>456-654</td>
+                            <td>info@company.com</td>
+                            <td>Сергеев Иван</td>
+                            <td>Иванов Сергей</td>
+                            <td>02.12.2023</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> <!-- Вкладка Контакты лица end-->
+
+            <!-- Вкладка Физические лица -->
+            <div class="tab-pane fade" id="physical">
+                <h2 class="mt-3">Физические лица (30)</h2>
+                <!-- Таблица для физических лиц -->
+                <!-- Здесь повторите код таблицы -->
+                <div class="d-flex justify-content-between align-items-end mt-3">
+                    <div class="d-flex g-3 align-items-center">
+                        <!-- Поиск -->
+                        <div class="me-3">
+                            <label for="contactsSearch" class="form-label">Поиск: </label>
+                            <input type="text" class="form-control" id="contactsSearch">
+                        </div>
+                        <!-- По категории -->
+                        <div class="me-3">
+                            <label for="contactsCategory" class="form-label">По категории: </label>
+                            <select class="form-select" id="contactsCategory">
+                                <option selected>Не указано</option>
+                                <option value="1">Опция 1</option>
+                                <option value="2">Опция 2</option>
+                            </select>
+                        </div>
+                        <!-- Повторяющиеся заявки -->
+                        <div class="me-3">
+                            <label for="contactsRequest" class="form-label">Повторяющиеся заявки: </label>
+                            <select class="form-select" id="contactsRequest">
+                                <option selected>Не указано</option>
+                                <option value="1">Указывать</option>
+                            </select>
+                        </div>
+                        <!-- На странице -->
+                        <div class="me-3">
+                            <label for="contactsCountPage" class="form-label">На странице: </label>
+                            <select class="form-select" id="contactsCountPage">
+                                <option selected>На странице</option>
+                                <option value="10">10 строк</option>
+                                <option value="20">20 строк</option>
+                                <option value="50">50 строк</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Кнопка Добавить -->
+                    <div>
+                        <button class="btn btn-success">+ Добавить</button>
+                    </div>
+                </div>
+                <!-- Таблица -->
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Название</th>
+                            <th scope="col">Телефон</th>
+                            <th scope="col">Электронная почта</th>
+                            <th scope="col">Ответственный менеджер</th>
+                            <th scope="col">Наблюдатели по умолчанию</th>
+                            <th scope="col">Дата создания</th>
+                        </tr>
+                        </thead>
+                        <!-- Заполните таблицу данными для каждой вкладки -->
+                        <tbody>
+                        <tr>
+                            <td>Horns & Hooves</td>
+                            <td>456-654</td>
+                            <td>info@company.com</td>
+                            <td>Сергеев Иван</td>
+                            <td>Иванов Сергей</td>
+                            <td>02.12.2023</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> <!-- Вкладка Физические лица end-->
+        </div>
+    </div>
+
+
+</body>
+</html>
