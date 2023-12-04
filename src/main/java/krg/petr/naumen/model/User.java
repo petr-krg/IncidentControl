@@ -2,7 +2,9 @@ package krg.petr.naumen.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.Set;
 
@@ -37,11 +39,35 @@ public class User extends BaseEntity{
     @JoinColumn(name = "position_id")
     private Position position;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<UserRole> userRoles = new HashSet<>();
+
+    public void addRole(Role role) {
+        UserRole userRole = new UserRole(this, role);
+        userRoles.add(userRole);
+        role.getUserRoles().add(userRole);
+    }
+
+    public void removeRole(Role role) {
+        for (Iterator<UserRole> iterator = userRoles.iterator(); iterator.hasNext();) {
+            UserRole userRole = iterator.next();
+
+            if (userRole.getUser().equals(this) && userRole.getRole().equals(role)) {
+                iterator.remove();
+                userRole.getRole().getUserRoles().remove(userRole);
+                userRole.setUser(null);
+                userRole.setRole(null);
+            }
+        }
+    }
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
 
     public Department getDepartment() {
         return department;
@@ -57,14 +83,6 @@ public class User extends BaseEntity{
 
     public void setPosition(Position position) {
         this.position = position;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> role) {
-        this.roles = role;
     }
 
     public String getName() {

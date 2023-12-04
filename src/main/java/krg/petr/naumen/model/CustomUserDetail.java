@@ -23,8 +23,8 @@ public class CustomUserDetail implements UserDetails {
         this.userLogin = user.getLogin();
         this.userPassword = user.getPassword();
 
-        this.authorities = user.getRoles().stream()
-                .map(userRole -> new SimpleGrantedAuthority("ROLE_" + userRole.getName()))
+        this.authorities = user.getUserRoles().stream()
+                .map(userRole -> new SimpleGrantedAuthority("ROLE_" + userRole.getRole().getName()))
                 .collect(Collectors.toSet());
     }
 

@@ -53,6 +53,20 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    public void updateUserRole(User user, Set<Role> newRoles) {
+
+        user.getUserRoles().clear();
+
+        for (Role role : newRoles) {
+            UserRole userRole = new UserRole();
+            userRole.setUser(user);
+            userRole.setRole(role);
+            user.getUserRoles().add(userRole);
+        }
+
+        userRepository.save(user);
+    }
+
     @Override
     public UserProfileDTO getUserProfile(String userName) {
 
@@ -91,7 +105,11 @@ public class UserServiceImpl implements UserService {
                 .map(Position::getName)
                 .toList();
 
-        String currentRole = user.getRoles().iterator().next().getName();
+//        userProfileDTO.setCurrentRole(String.join(", ", currentRoles));
+//        Set<String> currentRoles = user.getUserRoles().stream()
+//                .map(userRole -> userRole.getRole().getName())
+//                .collect(Collectors.toSet());
+        String currentRole = user.getUserRoles().iterator().next().getRole().getName();
         List<String> allRoles = roleRepository.findAll().stream()
                 .map(Role::getName)
                 .toList();
@@ -115,38 +133,41 @@ public class UserServiceImpl implements UserService {
             User user = userRepository.findByName(userName)
                     .orElseThrow(()-> new UsernameNotFoundException(format("User not found by name = %s!", userName)));
 
-//            Person person = user.getPerson();
-//            if (person != null) {
-//                person.setFirstName(userProfileDTO.getUserFirstName());
-//                person.setLastName(userProfileDTO.getUserLatName());
-//                person.setPatName(userProfileDTO.getUserPatName());
-//                person.setBirthDate(userProfileDTO.getUserBirthDate());
-//
-//                personRepository.save(person);
-//            }
+            Person person = user.getPerson();
+            if (person != null) {
+                person.setFirstName(userProfileDTO.getUserFirstName());
+                person.setLastName(userProfileDTO.getUserLatName());
+                person.setPatName(userProfileDTO.getUserPatName());
+                person.setBirthDate(userProfileDTO.getUserBirthDate());
 
-            user.setName(userProfileDTO.getUserDisplayName());
-            user.setLogin(userProfileDTO.getUserLogin());
-            user.setEmail(userProfileDTO.getUserEmail());
-            user.setPhone(userProfileDTO.getUserPhone());
+                personRepository.save(person);
+            }
 
             if (!userProfileDTO.getCurrentRole().isEmpty()) {
                 Role role = roleRepository.findByName(userProfileDTO.getCurrentRole())
                         .orElseThrow(() -> new EntityNotFoundException(
                                 format("Role [%s] not found", userProfileDTO.getCurrentRole())));
-                user.setRoles(Set.of(role));
-                role.getUsers().add(user);
+
+                user.getUserRoles().clear();
+                user.addRole(role);
             }
-//
-//            if (!userProfileDTO.getCurrentDepartment().isEmpty()) {
-//                Department department = departmentRepository.findByName(userProfileDTO.getCurrentDepartment());
-//                user.setDepartment(department);
-//            }
-//
-//            if (!userProfileDTO.getCurrentPosition().isEmpty()) {
-//                Position position = positionRepository.findByName(userProfileDTO.getCurrentPosition());
-//                user.setPosition(position);
-//            }
+
+            if (!userProfileDTO.getCurrentDepartment().isEmpty()) {
+                Department department = departmentRepository.findByName(userProfileDTO.getCurrentDepartment());
+
+                user.setDepartment(department);
+            }
+
+            if (!userProfileDTO.getCurrentPosition().isEmpty()) {
+                Position position = positionRepository.findByName(userProfileDTO.getCurrentPosition());
+
+                user.setPosition(position);
+            }
+
+            user.setName(userProfileDTO.getUserDisplayName());
+            user.setLogin(userProfileDTO.getUserLogin());
+            user.setEmail(userProfileDTO.getUserEmail());
+            user.setPhone(userProfileDTO.getUserPhone());
 
             userRepository.save(user);
         } catch (Exception e) {

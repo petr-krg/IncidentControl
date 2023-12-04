@@ -36,8 +36,8 @@ public class DataInitializer {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Transactional
     @PostConstruct
+    @Transactional
     public void init() {
 
         final long DEPARTMENT_ID = 10L;
@@ -53,7 +53,7 @@ public class DataInitializer {
             Position position = positionRepository.findById(POSITION_ID)
                     .orElseThrow(() -> new EntityNotFoundException(format("Position by ID:%d not found!", POSITION_ID)));
 
-            Role adminRole = roleRepository.findByName("ADMINISTRATOR")
+            Role roleAdministrator = roleRepository.findByName("ADMINISTRATOR")
                     .orElseGet(() -> {
                         Role newRole = new Role();
                         newRole.setName("ADMINISTRATOR");
@@ -76,12 +76,11 @@ public class DataInitializer {
             newAdmin.setPassword(passwordEncoder.encode("admin"));
             newAdmin.setEmail("admin@mail.kz");
             newAdmin.setPhone("+777711223333");
-            newAdmin.setRoles(Set.of(adminRole));
             newAdmin.setPerson(person);
             newAdmin.setDepartment(department);
             newAdmin.setPosition(position);
+            newAdmin.addRole(roleAdministrator);
 
-            adminRole.getUsers().add(newAdmin);
             userRepository.save(newAdmin);
         }
     }
