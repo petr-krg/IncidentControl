@@ -1,7 +1,5 @@
 package krg.petr.naumen.dto;
 
-import krg.petr.naumen.model.Position;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,7 +7,7 @@ public class UserProfileDTO {
 
     private String userFirstName;
 
-    private String userLatName;
+    private String userLastName;
 
     private String userPatName;
 
@@ -114,12 +112,12 @@ public class UserProfileDTO {
         this.userFirstName = userFirstName;
     }
 
-    public String getUserLatName() {
-        return userLatName;
+    public String getUserLastName() {
+        return userLastName;
     }
 
-    public void setUserLatName(String userLatName) {
-        this.userLatName = userLatName;
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
     }
 
     public String getUserPatName() {

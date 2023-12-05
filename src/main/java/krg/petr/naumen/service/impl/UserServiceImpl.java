@@ -11,8 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -38,6 +37,9 @@ public class UserServiceImpl implements UserService {
     private PositionRepository positionRepository;
 
     @Autowired
+    private UserRoleRepository userRoleRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
@@ -55,7 +57,7 @@ public class UserServiceImpl implements UserService {
 
     public void updateUserRole(User user, Set<Role> newRoles) {
 
-        user.getUserRoles().clear();
+        clearUserRole(user);
 
         for (Role role : newRoles) {
             UserRole userRole = new UserRole();
@@ -67,6 +69,16 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    public void clearUserRole(User user) {
+
+        for (Iterator<UserRole> iterator = user.getUserRoles().iterator(); iterator.hasNext();) {
+
+            UserRole userRole = iterator.next();
+            iterator.remove();
+            userRoleRepository.delete(userRole);
+        }
+    }
+
     @Override
     public UserProfileDTO getUserProfile(String userName) {
 
@@ -75,7 +87,7 @@ public class UserServiceImpl implements UserService {
 
         UserProfileDTO userProfileDTO = new UserProfileDTO();
         userProfileDTO.setUserFirstName(user.getPerson().getFirstName());
-        userProfileDTO.setUserLatName(user.getPerson().getLastName());
+        userProfileDTO.setUserLastName(user.getPerson().getLastName());
         userProfileDTO.setUserPatName(user.getPerson().getPatName());
         userProfileDTO.setUserBirthDate(user.getPerson().getBirthDate());
         userProfileDTO.setUserGender(user.getPerson().getGenderDisplayName());
@@ -136,7 +148,7 @@ public class UserServiceImpl implements UserService {
             Person person = user.getPerson();
             if (person != null) {
                 person.setFirstName(userProfileDTO.getUserFirstName());
-                person.setLastName(userProfileDTO.getUserLatName());
+                person.setLastName(userProfileDTO.getUserLastName());
                 person.setPatName(userProfileDTO.getUserPatName());
                 person.setBirthDate(userProfileDTO.getUserBirthDate());
 
@@ -148,7 +160,8 @@ public class UserServiceImpl implements UserService {
                         .orElseThrow(() -> new EntityNotFoundException(
                                 format("Role [%s] not found", userProfileDTO.getCurrentRole())));
 
-                user.getUserRoles().clear();
+                //user.getUserRoles().clear();
+                clearUserRole(user);
                 user.addRole(role);
             }
 
