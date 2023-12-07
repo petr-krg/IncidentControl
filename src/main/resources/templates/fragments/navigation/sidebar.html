@@ -1,0 +1,48 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="sidebar">
+    <div class="sidebar bg-light border-end" id="sidebar">
+        <ul class="nav nav-pills flex-column mb-auto">
+
+            <li class="nav-item"><a th:href="@{/index}" class="nav-link" aria-current="page">
+                    <span class="me-2">
+                        <img th:src="@{/img/bell-solid.svg}" alt="Заявки" style="width: 24px; height: 24px;">
+                    </span> <b style="color: #1E3050;">Заявки</b></a>
+            </li>
+            <li class="nav-item"><a th:href="@{/clients}" class="nav-link">
+                <span class="me-2">
+                    <img th:src="@{/img/user-tie-solid.svg}" alt="Клиенты" style="width: 24px; height: 24px;">
+                </span> <b style="color: #1E3050;">Клиенты</b></a>
+            </li>
+            <li class="nav-item"><a th:href="@{/contracts}"  class="nav-link">
+                <span class="me-2">
+                    <img th:src="@{/img/briefcase-solid.svg}" alt="Договора" style="width: 24px; height: 24px;">
+                </span> <b style="color: #1E3050;">Договора</b></a>
+            </li>
+            <li class="nav-item"><a th:href="@{/equipment}" class="nav-link">
+                <span class="me-2">
+                    <img th:src="@{/img/server-solid.svg}" alt="Оборудование" style="width: 24px; height: 24px;">
+                </span> <b style="color: #1E3050;">Оборудование</b></a></li>
+            <li class="nav-item"><a th:href="@{/employees}" class="nav-link">
+                <span class="me-2">
+                    <img th:src="@{/img/users-solid.svg}" alt="Сотрудники" style="width: 24px; height: 24px;">
+                </span> <b style="color: #1E3050;">Сотрудники</b></a></li>
+            <li class="nav-item"><a th:href="@{/reports}" class="nav-link">
+                <span class="me-2">
+                    <img th:src="@{/img/chart-area-solid.svg}" alt="Отчеты" style="width: 24px; height: 24px;">
+                </span> <b style="color: #1E3050;">Отчеты</b></a></li>
+            <li class="nav-item"><a th:href="@{/settings}" class="nav-link">
+                <span class="me-2">
+                    <img th:src="@{/img/gear-solid.svg}" alt="Настройка" style="width: 24px; height: 24px;">
+                </span> <b style="color: #1E3050;">Настройка</b></a></li>
+        </ul>
+        <div class="bottom-legend text-center">
+            <div class="mb-2"><span sec:authentication="principal.authorities"> </span></div>
+            <div class="text-muted"><b>&copy; 2023 petr.krg, erlan.krg</b></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

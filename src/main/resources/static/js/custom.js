@@ -4,7 +4,7 @@ function loadUserProfile() {
     fetch('/user/profile-info')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('lastName').value = data.userLatName;
+            document.getElementById('lastName').value = data.userLastName;
             document.getElementById('firstName').value = data.userFirstName;
             document.getElementById('patName').value = data.userPatName;
             document.getElementById('userName').value = data.userDisplayName;

@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Incendentor</title>
@@ -12,10 +13,11 @@
 <div class="d-flex">
     <div th:replace="~{fragments/navigation/sidebar :: sidebar}"/>
     <div class="content">
-        <div th:replace="~{fragments/listClients :: clients}"/>
+        <h4>Сотрудники</h4>
     </div>
 </div>
 
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
 </body>
 </html>

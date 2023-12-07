@@ -3,15 +3,16 @@
 </head>
 <body>
 <div th:fragment="header">
+
     <div class="container-fluid">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
-            <a th:href="@{/}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <a th:href="@{/index}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
                 <img th:src="@{/img/logo.svg}" width="400" height="40" class="bi me-2" alt="" loading="lazy">
             </a>
 
-            <div th:replace="~{fragments/dialogs/changeUserePassword :: changeUserPassword}"/>
+            <div th:replace="~{fragments/modal/changePassword :: changePassword}"/>
 
-            <div th:replace="~{fragments/dialogs/userProfile :: userProfile}"/>
+            <div th:replace="~{fragments/modal/editProfile :: editProfile}"/>
 
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,6 +27,7 @@
             </div>
         </header>
     </div>
+
 </div>
 </body>
 </html>

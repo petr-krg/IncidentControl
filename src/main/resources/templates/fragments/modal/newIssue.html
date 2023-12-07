@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+</head>
+<body>
+
+<div th:fragment="newIssue">
+
+    <div class="modal fade" id="newIssueModal" tabindex="-1" aria-labelledby="newIssueModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newIssueModalLabel">Новая заявка</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Тема заявки -->
+                                <div class="mb-3">
+                                    <label for="issueSubject" class="form-label">
+                                        <span class="text-danger">*</span>Тема
+                                    </label>
+                                    <input type="text" class="form-control" id="issueSubject" placeholder="Тема заявки" required>
+                                </div>
+                                <!-- Тип заявки -->
+                                <div class="mb-3">
+                                    <label for="issueType" class="form-label">Тип заявки</label>
+                                    <select class="form-select" id="issueType">
+                                        <option selected>Обслуживание</option>
+                                        <!-- Другие опции -->
+                                    </select>
+                                </div>
+                                <!-- Описание заявки -->
+                                <div class="mb-3">
+                                    <label for="issueDescription" class="form-label">Описание</label>
+                                    <textarea class="form-control" id="issueDescription" rows="6"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Приоритет -->
+                                <div class="mb-3">
+                                    <label for="issuePriority" class="form-label">Приоритет</label>
+                                    <select class="form-select" id="issuePriority">
+                                        <option selected>Низкий</option>
+                                        <!-- Другие опции -->
+                                    </select>
+                                </div>
+                                <!-- Дополнительные поля -->
+                                <!-- Плановая дата решения -->
+                                <div class="mb-3">
+                                    <label for="plannedResolutionDate" class="form-label">Плановая дата решения</label>
+                                    <input type="datetime-local" class="form-control" id="plannedResolutionDate">
+                                </div>
+                                <!-- Повторяющаяся заявка -->
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="recurringIssue" data-bs-toggle="collapse" data-bs-target="#recurringOptions" aria-expanded="false" aria-controls="recurringOptions">
+                                        <label class="form-check-label" for="recurringIssue">Повторяющаяся заявка</label>
+                                    </div>
+
+                                    <div class="collapse" id="recurringOptions">
+                                        <div class="mb-3">
+                                            <label for="nextOccurrence" class="form-label">Следующее повторение</label>
+                                            <input type="datetime-local" class="form-control" id="nextOccurrence">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="repeatEvery" class="form-label">Повторять через</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" id="repeatEvery">
+
+                                                <input type="radio" class="btn-check" name="options" id="day" autocomplete="off">
+                                                <label class="btn btn-outline-secondary" for="day">дн.</label>
+
+                                                <input type="radio" class="btn-check" name="options" id="week" autocomplete="off">
+                                                <label class="btn btn-outline-secondary" for="week">нед.</label>
+
+                                                <input type="radio" class="btn-check" name="options" id="month" autocomplete="off">
+                                                <label class="btn btn-outline-secondary" for="month">мес.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- Другие поля справа -->
+                          </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary">Создать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

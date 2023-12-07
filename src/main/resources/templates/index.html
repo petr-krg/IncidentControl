@@ -8,12 +8,12 @@
     <link rel="stylesheet" th:href="@{/css/custom.css}">
 </head>
 <body>
-    <div th:replace="~{fragments/header :: header}"/>
+    <div th:replace="~{fragments/navigation/header :: header}"/>
 
     <div class="d-flex">
-        <div th:replace="~{fragments/sidebar :: sidebar}"/>
+        <div th:replace="~{fragments/navigation/sidebar :: sidebar}"/>
         <div class="content">
-            <div th:replace="~{fragments/request_list :: request}"/>
+            <div th:replace="~{fragments/listIssue :: listIssue}"/>
         </div>
     </div>
 

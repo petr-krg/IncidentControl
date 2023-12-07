@@ -5,8 +5,7 @@
 
 <div th:fragment="clients">
 
-    <div class="container-fluid mt-4">
-        <!-- Вкладки -->
+    <div class="container-fluid  mt-4">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-bs-toggle="tab" href="#companies">Компании (27)</a>
@@ -19,21 +18,16 @@
             </li>
         </ul>
 
-        <!-- Содержимое вкладок -->
-        <div class="tab-content"> <!-- Вкладка Компании -->
+        <div class="tab-content">
             <div class="tab-pane fade show active" id="companies">
                 <h2 class="mt-3">Список компаний (27)</h2>
-                <!-- Фильтры и таблица для компаний -->
-                <!-- Фильтры -->
                 <div class="d-flex justify-content-between align-items-end mt-3">
                     <div class="d-flex g-3 align-items-center">
-                        <!-- Поиск -->
                         <div class="me-3">
                             <label for="contactsSearch" class="form-label">Поиск: </label>
                             <input type="text" class="form-control" id="contactsSearch">
                         </div>
-                        <!-- По категории -->
-                        <div class="me-3">
+                         <div class="me-3">
                             <label for="contactsCategory" class="form-label">По категории: </label>
                             <select class="form-select" id="contactsCategory">
                                 <option selected>Не указано</option>
@@ -41,7 +35,6 @@
                                 <option value="2">Опция 2</option>
                             </select>
                         </div>
-                        <!-- Повторяющиеся заявки -->
                         <div class="me-3">
                             <label for="contactsRequest" class="form-label">Повторяющиеся заявки: </label>
                             <select class="form-select" id="contactsRequest">
@@ -49,7 +42,6 @@
                                 <option value="1">Указывать</option>
                             </select>
                         </div>
-                        <!-- На странице -->
                         <div class="me-3">
                             <label for="contactsCountPage" class="form-label">На странице: </label>
                             <select class="form-select" id="contactsCountPage">
@@ -60,12 +52,10 @@
                             </select>
                         </div>
                     </div>
-                    <!-- Кнопка Добавить -->
                     <div>
                         <button class="btn btn-success">+ Добавить</button>
                     </div>
                 </div>
-                <!-- Таблица -->
                 <div class="table-responsive mt-3">
                     <table class="table table-hover">
                         <thead>
@@ -78,7 +68,6 @@
                             <th scope="col">Дата создания</th>
                         </tr>
                         </thead>
-                        <!-- Заполните таблицу данными для каждой вкладки -->
                         <tbody>
                         <tr>
                             <td>Horns & Hooves</td>
@@ -92,21 +81,16 @@
                     </table>
                 </div>
 
-            </div> <!-- Вкладка Компании end -->
+            </div>
 
-            <!-- Вкладка Контакты лица -->
             <div class="tab-pane fade" id="contacts">
                 <h2 class="mt-3">Контактные лица (32)</h2>
-                <!-- Таблица для контактов лица -->
-                <!-- Здесь повторите код таблицы -->
                 <div class="d-flex justify-content-between align-items-end mt-3">
                     <div class="d-flex g-3 align-items-center">
-                        <!-- Поиск -->
                         <div class="me-3">
                             <label for="contactsSearch" class="form-label">Поиск: </label>
                             <input type="text" class="form-control" id="contactsSearch">
                         </div>
-                        <!-- По категории -->
                         <div class="me-3">
                             <label for="contactsCategory" class="form-label">По категории: </label>
                             <select class="form-select" id="contactsCategory">
@@ -115,7 +99,6 @@
                                 <option value="2">Опция 2</option>
                             </select>
                         </div>
-                        <!-- Повторяющиеся заявки -->
                         <div class="me-3">
                             <label for="contactsRequest" class="form-label">Повторяющиеся заявки: </label>
                             <select class="form-select" id="contactsRequest">
@@ -123,7 +106,6 @@
                                 <option value="1">Указывать</option>
                             </select>
                         </div>
-                        <!-- На странице -->
                         <div class="me-3">
                             <label for="contactsCountPage" class="form-label">На странице: </label>
                             <select class="form-select" id="contactsCountPage">
@@ -134,12 +116,10 @@
                             </select>
                         </div>
                     </div>
-                    <!-- Кнопка Добавить -->
                     <div>
                         <button class="btn btn-success">+ Добавить</button>
                     </div>
                 </div>
-                <!-- Таблица -->
                 <div class="table-responsive mt-3">
                     <table class="table table-hover">
                         <thead>
@@ -152,7 +132,6 @@
                             <th scope="col">Дата создания</th>
                         </tr>
                         </thead>
-                        <!-- Заполните таблицу данными для каждой вкладки -->
                         <tbody>
                         <tr>
                             <td>Horns & Hooves</td>
@@ -165,21 +144,16 @@
                         </tbody>
                     </table>
                 </div>
-            </div> <!-- Вкладка Контакты лица end-->
+            </div>
 
-            <!-- Вкладка Физические лица -->
             <div class="tab-pane fade" id="physical">
                 <h2 class="mt-3">Физические лица (30)</h2>
-                <!-- Таблица для физических лиц -->
-                <!-- Здесь повторите код таблицы -->
                 <div class="d-flex justify-content-between align-items-end mt-3">
                     <div class="d-flex g-3 align-items-center">
-                        <!-- Поиск -->
                         <div class="me-3">
                             <label for="contactsSearch" class="form-label">Поиск: </label>
                             <input type="text" class="form-control" id="contactsSearch">
                         </div>
-                        <!-- По категории -->
                         <div class="me-3">
                             <label for="contactsCategory" class="form-label">По категории: </label>
                             <select class="form-select" id="contactsCategory">
@@ -188,7 +162,6 @@
                                 <option value="2">Опция 2</option>
                             </select>
                         </div>
-                        <!-- Повторяющиеся заявки -->
                         <div class="me-3">
                             <label for="contactsRequest" class="form-label">Повторяющиеся заявки: </label>
                             <select class="form-select" id="contactsRequest">
@@ -196,7 +169,6 @@
                                 <option value="1">Указывать</option>
                             </select>
                         </div>
-                        <!-- На странице -->
                         <div class="me-3">
                             <label for="contactsCountPage" class="form-label">На странице: </label>
                             <select class="form-select" id="contactsCountPage">
@@ -207,7 +179,6 @@
                             </select>
                         </div>
                     </div>
-                    <!-- Кнопка Добавить -->
                     <div>
                         <button class="btn btn-success">+ Добавить</button>
                     </div>
@@ -225,7 +196,6 @@
                             <th scope="col">Дата создания</th>
                         </tr>
                         </thead>
-                        <!-- Заполните таблицу данными для каждой вкладки -->
                         <tbody>
                         <tr>
                             <td>Horns & Hooves</td>
@@ -238,7 +208,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div> <!-- Вкладка Физические лица end-->
+            </div>
         </div>
     </div>
 

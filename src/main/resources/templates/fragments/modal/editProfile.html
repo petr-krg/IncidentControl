@@ -3,7 +3,7 @@
 </head>
 <body>
 
-<div th:fragment="userProfile">
+<div th:fragment="editProfile">
 
     <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="userName" class="form-label"><span class="required-star">*</span>Отображаемое имя: </label>
-                                    <input type="text" class="form-control" id="userName" name="userDisplayName" required>
+                                    <input type="text" class="form-control" id="userName" name="userDisplayName" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="userPhone" class="form-label"><span class="required-star">*</span>Телефон: </label>
@@ -70,8 +70,8 @@
                                     <input type="date" class="form-control" id="birthdate" name="userBirthDate">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="userLogin" class="form-label"><span class="required-star">*</span>Логин: </label>
-                                    <input type="text" class="form-control" id="userLogin" name="userLogin" required>
+                                    <label for="userLogin" class="form-label">Логин: </label>
+                                    <input type="text" class="form-control" id="userLogin" name="userLogin" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="userEmail" class="form-label"><span class="required-star">*</span>Электронная почта: </label>
