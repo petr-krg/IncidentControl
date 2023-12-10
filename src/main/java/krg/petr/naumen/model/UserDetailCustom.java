@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CustomUserDetail implements UserDetails {
+public class UserDetailCustom implements UserDetails {
 
     private final Long userID;
 
@@ -18,7 +18,7 @@ public class CustomUserDetail implements UserDetails {
 
     private final Set<GrantedAuthority> authorities;
 
-    public CustomUserDetail(User user) {
+    public UserDetailCustom(User user) {
         this.userID = user.getId();
         this.userLogin = user.getLogin();
         this.userPassword = user.getPassword();

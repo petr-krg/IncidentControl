@@ -66,7 +66,10 @@ public class DataInitializer {
             person.setFirstName("Админ");
             person.setLastName("Администраторов");
             person.setPatName("Админович");
+            person.setEmail("admin@mail.kz");
+            person.setPhone("+777711223333");
             person.setGender(0);
+            person.setEmployee(1);
             person.setBirthDate(LocalDate.parse("01.01.2001", formatter));
             person = personRepository.save(person);
 
@@ -74,8 +77,6 @@ public class DataInitializer {
             newAdmin.setLogin("admin");
             newAdmin.setName("admin");
             newAdmin.setPassword(passwordEncoder.encode("admin"));
-            newAdmin.setEmail("admin@mail.kz");
-            newAdmin.setPhone("+777711223333");
             newAdmin.setPerson(person);
             newAdmin.setDepartment(department);
             newAdmin.setPosition(position);

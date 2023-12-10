@@ -93,8 +93,8 @@ public class UserServiceImpl implements UserService {
         userProfileDTO.setUserGender(user.getPerson().getGenderDisplayName());
         userProfileDTO.setUserDisplayName(user.getName());
         userProfileDTO.setUserLogin(user.getLogin());
-        userProfileDTO.setUserEmail(user.getEmail());
-        userProfileDTO.setUserPhone(user.getPhone());
+        userProfileDTO.setUserEmail(user.getPerson().getEmail());
+        userProfileDTO.setUserPhone(user.getPerson().getPhone());
 
         Department department = departmentRepository.findById(user.getDepartment().getParent().getId())
                 .orElseThrow(() ->  new EntityNotFoundException(
@@ -151,6 +151,8 @@ public class UserServiceImpl implements UserService {
                 person.setLastName(userProfileDTO.getUserLastName());
                 person.setPatName(userProfileDTO.getUserPatName());
                 person.setBirthDate(userProfileDTO.getUserBirthDate());
+                person.setEmail(userProfileDTO.getUserEmail());
+                person.setPhone(userProfileDTO.getUserPhone());
 
                 personRepository.save(person);
             }
@@ -179,8 +181,7 @@ public class UserServiceImpl implements UserService {
 
             user.setName(userProfileDTO.getUserDisplayName());
             user.setLogin(userProfileDTO.getUserLogin());
-            user.setEmail(userProfileDTO.getUserEmail());
-            user.setPhone(userProfileDTO.getUserPhone());
+
 
             userRepository.save(user);
         } catch (Exception e) {

@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import krg.petr.naumen.model.enumeration.Gender;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.time.LocalDate;
 
@@ -11,7 +12,8 @@ import static java.lang.String.format;
 
 @Entity
 @Table(name = "persons")
-public class Person extends BaseEntity{
+@SQLRestriction("employee = 1")
+public class EmployeesPerson extends BaseEntity{
 
     @Column(name = "first_name", length = 50)
     private String firstName;
@@ -36,14 +38,6 @@ public class Person extends BaseEntity{
 
     @Column(name = "employee")
     private Integer employee;
-
-    public Integer getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Integer employee) {
-        this.employee = employee;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -77,7 +71,6 @@ public class Person extends BaseEntity{
         this.phone = phone;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -98,13 +91,21 @@ public class Person extends BaseEntity{
         return gender;
     }
 
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public Integer getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Integer employee) {
+        this.employee = employee;
+    }
+
     public String getGenderDisplayName() {
         Gender userGender = Gender.fromCode(gender);
         return (gender != null ? userGender.getDisplayName() : "");
-    }
-
-    public void setGender(Integer gender) {
-        this.gender = gender;
     }
 
     public String getFIO() {

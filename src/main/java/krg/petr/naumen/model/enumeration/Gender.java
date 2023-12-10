@@ -1,4 +1,4 @@
-package krg.petr.naumen.model;
+package krg.petr.naumen.model.enumeration;
 
 public enum Gender {
 

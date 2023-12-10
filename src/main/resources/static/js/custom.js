@@ -21,6 +21,7 @@ function loadUserProfile() {
         })
         .catch(error => console.error('Error:', error));
 }
+
 // =======================================================================================
 function updateSelectOptions(selectId, options) {
     const select = document.getElementById(selectId);

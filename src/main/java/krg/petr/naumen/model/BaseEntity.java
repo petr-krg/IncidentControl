@@ -3,6 +3,7 @@ package krg.petr.naumen.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
@@ -41,4 +42,9 @@ public abstract class BaseEntity implements Serializable {
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
+
+    public LocalDate getDateFromCreated() {
+        return created.toLocalDate();
+    }
+
 }

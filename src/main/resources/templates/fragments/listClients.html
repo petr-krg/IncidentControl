@@ -4,19 +4,25 @@
 <body>
 
 <div th:fragment="clients">
+    <div th:replace="~{fragments/modal/editClient :: editClient}"/>
+
+    <div th:replace="~{fragments/modal/newClient :: newClient}"/>
 
     <div class="container-fluid  mt-4">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#companies">Компании (27)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#contacts">Контакты лица (32)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#physical">Физические лица (30)</a>
-            </li>
-        </ul>
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0 me-3"><b>Клиенты</b></h5>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#companies">Компании (27)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#contacts">Контактные лица (32)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#physical">Физические лица (30)</a>
+                </li>
+            </ul>
+        </div>
 
         <div class="tab-content">
             <div class="tab-pane fade show active" id="companies">
@@ -49,33 +55,42 @@
                                 <option value="10">10 строк</option>
                                 <option value="20">20 строк</option>
                                 <option value="50">50 строк</option>
+                                <option value="50">100 строк</option>
                             </select>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-success">+ Добавить</button>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newClient">+ Добавить</button>
                     </div>
                 </div>
                 <div class="table-responsive mt-3">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col">Название</th>
+                            <th scope="col">Наименование</th>
+                            <th scope="col">Адрес</th>
+                            <th scope="col">Отвественное лицо</th>
                             <th scope="col">Телефон</th>
                             <th scope="col">Электронная почта</th>
-                            <th scope="col">Ответственный менеджер</th>
-                            <th scope="col">Наблюдатели по умолчанию</th>
                             <th scope="col">Дата создания</th>
+                            <th scope="col">Статус</th>
+                            <th scope="col">Действия</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Horns & Hooves</td>
-                            <td>456-654</td>
-                            <td>info@company.com</td>
-                            <td>Сергеев Иван</td>
-                            <td>Иванов Сергей</td>
-                            <td>02.12.2023</td>
+                        <tr th:each="client : ${clientsList}">
+                            <td th:text="${client.name}">Horns & Hooves LLC</td>
+                            <td th:text="${client.address}">г.Алматы, ул Назарбаева, здание 15Б, 5 этаж, офис №527</td>
+                            <td th:text="${client.primaryContact}">Сергеев Иван</td>
+                            <td th:text="${client.phone}">456-654</td>
+                            <td th:text="${client.email}">info@company.com</td>
+                            <td th:text="${client.dateCreated}">01.01.2023</td>
+                            <td><span class="badge" th:classappend="${client.status == 'Активен'} ? 'bg-success' : 'bg-secondary'" th:text="${client.status}">Активен</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editClient"  onclick="loadClientData(${client.id})">Редактировать</button>
+                                <button class="btn btn-warning btn-sm">Деактивировать</button>
+                                <button class="btn btn-danger btn-sm">Удалить</button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -188,22 +203,30 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col">Название</th>
+                            <th scope="col">Ф.И.О</th>
+                            <th scope="col">Адрес</th>
                             <th scope="col">Телефон</th>
                             <th scope="col">Электронная почта</th>
-                            <th scope="col">Ответственный менеджер</th>
-                            <th scope="col">Наблюдатели по умолчанию</th>
+                            <th scope="col">Тип</th>
                             <th scope="col">Дата создания</th>
+                            <th scope="col">Статус</th>
+                            <th scope="col">Действия</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Horns & Hooves</td>
-                            <td>456-654</td>
-                            <td>info@company.com</td>
-                            <td>Сергеев Иван</td>
-                            <td>Иванов Сергей</td>
+                            <td>Иванов Иван Иваныч</td>
+                            <td>г.Алматы, ул.Резника 56/2, офис 115</td>
+                            <td>764-467</td>
+                            <td>ivano@mail.kz</td>
+                            <td>Разовый выезд</td>
                             <td>02.12.2023</td>
+                            <td><span class="badge bg-success">Активен</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">Редактировать</button>
+                                <button class="btn btn-warning btn-sm">Деактивировать</button>
+                                <button class="btn btn-danger btn-sm">Удалить</button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

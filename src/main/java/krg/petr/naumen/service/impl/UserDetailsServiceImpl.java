@@ -1,6 +1,6 @@
 package krg.petr.naumen.service.impl;
 
-import krg.petr.naumen.model.CustomUserDetail;
+import krg.petr.naumen.model.UserDetailCustom;
 import krg.petr.naumen.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByLogin(name);
 
         if (user != null) {
-            return new CustomUserDetail(user);
+            return new UserDetailCustom(user);
         } else {
             throw new UsernameNotFoundException(format("User with login %s could not be found", name));
         }

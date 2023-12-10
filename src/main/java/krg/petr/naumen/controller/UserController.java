@@ -22,6 +22,7 @@ public class UserController {
     @GetMapping("/profile-info")
     public ResponseEntity<UserProfileDTO> getUserProfile(Principal principal) {
         UserProfileDTO userProfileDTO = userService.getUserProfile(principal.getName());
+
         return  ResponseEntity.ok(userProfileDTO);
     }
 
@@ -34,6 +35,7 @@ public class UserController {
         } catch (Exception e){
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
+
         return "index";
     }
 
@@ -47,6 +49,7 @@ public class UserController {
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
-        return "redirect:/index";
+
+        return "index.html";
     }
 }
