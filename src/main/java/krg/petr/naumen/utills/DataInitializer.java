@@ -25,7 +25,7 @@ public class DataInitializer {
     private RoleRepository roleRepository;
 
     @Autowired
-    private PersonRepository personRepository;
+    private EmployeesPersonRepository employeesPersonRepository;
 
     @Autowired
     private DepartmentRepository departmentRepository;
@@ -62,7 +62,7 @@ public class DataInitializer {
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-            Person person = new Person();
+            EmployeesPerson person = new EmployeesPerson();
             person.setFirstName("Админ");
             person.setLastName("Администраторов");
             person.setPatName("Админович");
@@ -71,7 +71,7 @@ public class DataInitializer {
             person.setGender(0);
             person.setEmployee(1);
             person.setBirthDate(LocalDate.parse("01.01.2001", formatter));
-            person = personRepository.save(person);
+            person = employeesPersonRepository.save(person);
 
             User newAdmin = new User();
             newAdmin.setLogin("admin");

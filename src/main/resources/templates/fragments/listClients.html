@@ -8,6 +8,8 @@
 
     <div th:replace="~{fragments/modal/newClient :: newClient}"/>
 
+    <div th:replace="~{fragments/modal/newClientContact :: newClientContact}"/>
+
     <div class="container-fluid  mt-4">
         <div class="d-flex align-items-center">
             <h5 class="mb-0 me-3"><b>Клиенты</b></h5>
@@ -16,7 +18,7 @@
                     <a class="nav-link active" data-bs-toggle="tab" href="#companies">Компании (27)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#contacts">Контактные лица (32)</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#listClientsContacts">Контактные лица (32)</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="tab" href="#physical">Физические лица (30)</a>
@@ -34,23 +36,23 @@
                             <input type="text" class="form-control" id="contactsSearch">
                         </div>
                          <div class="me-3">
-                            <label for="contactsCategory" class="form-label">По категории: </label>
-                            <select class="form-select" id="contactsCategory">
+                            <label for="listClientContactCategory" class="form-label">По категории: </label>
+                            <select class="form-select" id="listClientContactCategory">
                                 <option selected>Не указано</option>
                                 <option value="1">Опция 1</option>
                                 <option value="2">Опция 2</option>
                             </select>
                         </div>
                         <div class="me-3">
-                            <label for="contactsRequest" class="form-label">Повторяющиеся заявки: </label>
-                            <select class="form-select" id="contactsRequest">
+                            <label for="listClientContactRequest" class="form-label">Повторяющиеся заявки: </label>
+                            <select class="form-select" id="listClientContactRequest">
                                 <option selected>Не указано</option>
                                 <option value="1">Указывать</option>
                             </select>
                         </div>
                         <div class="me-3">
-                            <label for="contactsCountPage" class="form-label">На странице: </label>
-                            <select class="form-select" id="contactsCountPage">
+                            <label for="listClientContactCountPage" class="form-label">На странице: </label>
+                            <select class="form-select" id="listClientContactCountPage">
                                 <option selected>На странице</option>
                                 <option value="10">10 строк</option>
                                 <option value="20">20 строк</option>
@@ -98,32 +100,32 @@
 
             </div>
 
-            <div class="tab-pane fade" id="contacts">
+            <div class="tab-pane fade" id="listClientsContacts">
                 <h2 class="mt-3">Контактные лица (32)</h2>
                 <div class="d-flex justify-content-between align-items-end mt-3">
                     <div class="d-flex g-3 align-items-center">
                         <div class="me-3">
-                            <label for="contactsSearch" class="form-label">Поиск: </label>
-                            <input type="text" class="form-control" id="contactsSearch">
+                            <label for="listClientSearchContact" class="form-label">Поиск: </label>
+                            <input type="text" class="form-control" id="listClientSearchContact">
                         </div>
                         <div class="me-3">
-                            <label for="contactsCategory" class="form-label">По категории: </label>
-                            <select class="form-select" id="contactsCategory">
+                            <label for="listClientCategoryContact" class="form-label">По категории: </label>
+                            <select class="form-select" id="listClientCategoryContact">
                                 <option selected>Не указано</option>
                                 <option value="1">Опция 1</option>
                                 <option value="2">Опция 2</option>
                             </select>
                         </div>
                         <div class="me-3">
-                            <label for="contactsRequest" class="form-label">Повторяющиеся заявки: </label>
-                            <select class="form-select" id="contactsRequest">
+                            <label for="listClientRequestContact" class="form-label">Повторяющиеся заявки: </label>
+                            <select class="form-select" id="listClientRequestContact">
                                 <option selected>Не указано</option>
                                 <option value="1">Указывать</option>
                             </select>
                         </div>
                         <div class="me-3">
-                            <label for="contactsCountPage" class="form-label">На странице: </label>
-                            <select class="form-select" id="contactsCountPage">
+                            <label for="listClientCountPageContact" class="form-label">На странице: </label>
+                            <select class="form-select" id="listClientCountPageContact">
                                 <option selected>На странице</option>
                                 <option value="10">10 строк</option>
                                 <option value="20">20 строк</option>
@@ -132,7 +134,7 @@
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-success">+ Добавить</button>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewContactModal">+ Добавить</button>
                     </div>
                 </div>
                 <div class="table-responsive mt-3">
@@ -198,7 +200,6 @@
                         <button class="btn btn-success">+ Добавить</button>
                     </div>
                 </div>
-                <!-- Таблица -->
                 <div class="table-responsive mt-3">
                     <table class="table table-hover">
                         <thead>

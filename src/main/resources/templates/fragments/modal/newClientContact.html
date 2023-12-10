@@ -1,0 +1,56 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div th:fragment="newClientContact">
+
+    <div class="modal fade" id="addNewContactModal" tabindex="-1" aria-labelledby="addNewContactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="addNewContactForm" th:action="@{/clients/add-client-contact}" th:object="${ClientContactDTO}" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addEmployeeModalLabel">Добавить контакт</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <label for="lastName" class="form-label"><span class="required-star">*</span>Фамилия: </label>
+                                <input type="text" class="form-control mb-2" id="lastName" name="lastName" placeholder="Фамилия" required>
+                                <label for="firstName" class="form-label"><span class="required-star">*</span>Имя: </label>
+                                <input type="text" class="form-control mb-2" id="firstName" name="firstName" placeholder="Имя" required>
+                                <label for="patName" class="form-label">Отчество: </label>
+                                <input type="text" class="form-control mb-2" id="patName" name="patName" placeholder="Отчество" required>
+                                <label for="birthDate" class="form-label">Дата рождения: </label>
+                                <input type="date" class="form-control mb-2" id="birthDate" name="birthDate" placeholder="Дата рождения">
+                            </div>
+                            <div class="col">
+                                <label for="phone" class="form-label"><span class="required-star">*</span>Телефон: </label>
+                                <input type="tel" class="form-control mb-2" id="phone" name="phone" placeholder="Телефон" required>
+                                <label for="email" class="form-label"><span class="required-star">*</span>Электронная почта: </label>
+                                <input type="email" class="form-control mb-2" id="email" name="email" placeholder="Электронная почта" required>
+                                <label for="gender" class="form-label">Пол: </label>
+                                <select class="form-select mb-2" id="gender" name="gender" required>
+                                    <option value="">Не выбрано</option>
+                                    <option value="Мужской">Мужской</option>
+                                    <option value="Женский">Женский</option>
+                                </select>
+                                <label for="position" class="form-label">Должность: </label>
+                                <input type="text" class="form-control mb-2" id="position" name="position" placeholder="Должность">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

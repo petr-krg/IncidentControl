@@ -1,9 +1,10 @@
 package krg.petr.naumen.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import krg.petr.naumen.model.enumeration.Gender;
+import org.hibernate.annotations.DiscriminatorFormula;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.time.LocalDate;
 
@@ -11,8 +12,13 @@ import static java.lang.String.format;
 
 @Entity
 @Table(name = "persons")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorFormula("case when employee = 1 " +
+                      "then 'Employee' else ( " +
+                      "    case when employee = 0 "+
+                      "    then 'Client' else 'Unknown' end) " +
+                      "end ")
 public class Person extends BaseEntity{
-
     @Column(name = "first_name", length = 50)
     private String firstName;
 
